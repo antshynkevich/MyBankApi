@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBankApi", "MyBankApi\MyBankApi.csproj", "{9ABC3072-60C5-4FCA-95AC-23DAAD56C1B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{BAC63E05-AF70-47FA-9241-BAB1EBF02B60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataEntityAndAccessLayer", "DataEntityAndAccessLayer\DataEntityAndAccessLayer.csproj", "{01E49A0D-10DB-4B54-A1F0-BCF603E74E2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9ABC3072-60C5-4FCA-95AC-23DAAD56C1B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ABC3072-60C5-4FCA-95AC-23DAAD56C1B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ABC3072-60C5-4FCA-95AC-23DAAD56C1B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAC63E05-AF70-47FA-9241-BAB1EBF02B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAC63E05-AF70-47FA-9241-BAB1EBF02B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAC63E05-AF70-47FA-9241-BAB1EBF02B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAC63E05-AF70-47FA-9241-BAB1EBF02B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E49A0D-10DB-4B54-A1F0-BCF603E74E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E49A0D-10DB-4B54-A1F0-BCF603E74E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E49A0D-10DB-4B54-A1F0-BCF603E74E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E49A0D-10DB-4B54-A1F0-BCF603E74E2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
