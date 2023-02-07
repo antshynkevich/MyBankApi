@@ -4,6 +4,7 @@ using DataEntityAndAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataEntityAndAccessLayer.Migrations
 {
     [DbContext(typeof(BankDbContext))]
-    partial class BankDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230202150747_NewEntities1")]
+    partial class NewEntities1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -358,7 +361,7 @@ namespace DataEntityAndAccessLayer.Migrations
 
                                             b3.HasKey("AtmGeolocationAtmAddressAtmId");
 
-                                            b3.ToTable("AtmGeographicCoordinates", (string)null);
+                                            b3.ToTable("AtmGeolocations");
 
                                             b3.WithOwner()
                                                 .HasForeignKey("AtmGeolocationAtmAddressAtmId");
