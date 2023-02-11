@@ -2,7 +2,7 @@
 
 namespace ServiceLayer.DTO.Atm;
 
-internal class AtmAddressDto
+public class AtmAddressDto
 {
     public string StreetName { get; set; }
     public string BuildingNumber { get; set; }
@@ -16,13 +16,13 @@ internal class AtmAddressDto
     public AtmGeolocationDto AtmGeolocationDto { get; set; }
 }
 
-internal class AtmGeolocationDto
+public class AtmGeolocationDto
 {
     [JsonPropertyName("geographicCoordinates")]
     public AtmGeographicCoordinatesDto AtmGeographicCoordinatesDto { get; set; }
 }
 
-internal class AtmGeographicCoordinatesDto
+public class AtmGeographicCoordinatesDto
 {
     public decimal Latitude { get; set; }
     public decimal Longitude { get; set; }
