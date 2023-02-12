@@ -19,4 +19,5 @@ public class Atm
     [Required]
     public ICollection<AtmService> AtmServices { get; set; }
     public AtmAvailability AtmAvailability { get; set; }
+    public ContactDetails ContactDetails { get; set; }
 }

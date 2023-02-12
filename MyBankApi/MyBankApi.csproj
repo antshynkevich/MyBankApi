@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataEntityAndAccessLayer\DataEntityAndAccessLayer.csproj" />
+    <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj" />
   </ItemGroup>
 
 </Project>

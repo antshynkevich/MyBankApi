@@ -14,5 +14,7 @@ internal class AtmConfig : IEntityTypeConfiguration<Atm>
             .ToTable(nameof(AtmGeolocation) + "s")
             .OwnsOne(g => g.AtmGeographicCoordinates)
             .ToTable(nameof(AtmGeographicCoordinates));
+
+        builder.OwnsOne(atm => atm.ContactDetails);
     }
 }
