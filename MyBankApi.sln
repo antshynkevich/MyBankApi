@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBankApi", "MyBankApi\MyBankApi.csproj", "{9ABC3072-60C5-4FCA-95AC-23DAAD56C1B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBankApi", "MyBankApi\MyBankApi.csproj", "{9ABC3072-60C5-4FCA-95AC-23DAAD56C1B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BAC63E05-AF70-47FA-9241-BAB1EBF02B60} = {BAC63E05-AF70-47FA-9241-BAB1EBF02B60}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{BAC63E05-AF70-47FA-9241-BAB1EBF02B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{BAC63E05-AF70-47FA-9241-BAB1EBF02B60}"
+	ProjectSection(ProjectDependencies) = postProject
+		{01E49A0D-10DB-4B54-A1F0-BCF603E74E2B} = {01E49A0D-10DB-4B54-A1F0-BCF603E74E2B}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataEntityAndAccessLayer", "DataEntityAndAccessLayer\DataEntityAndAccessLayer.csproj", "{01E49A0D-10DB-4B54-A1F0-BCF603E74E2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataEntityAndAccessLayer", "DataEntityAndAccessLayer\DataEntityAndAccessLayer.csproj", "{01E49A0D-10DB-4B54-A1F0-BCF603E74E2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
