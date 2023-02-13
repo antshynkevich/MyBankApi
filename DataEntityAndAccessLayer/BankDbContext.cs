@@ -15,6 +15,9 @@ public class BankDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new AtmConfig());
+        modelBuilder.ApplyConfiguration(new CardSchemeConfig());
+        modelBuilder.ApplyConfiguration(new AtmServiceConfig());
+        modelBuilder.ApplyConfiguration(new AtmTypeConfig());
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
