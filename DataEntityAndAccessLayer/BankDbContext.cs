@@ -11,6 +11,9 @@ public class BankDbContext : DbContext
     }
 
     public DbSet<Atm> Atms { get; set; }
+    public DbSet<AtmType> AtmTypes { get; set; }
+    public DbSet<AtmService> AtmServices { get; set; }
+    public DbSet<CardScheme> CardSchemes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -18,6 +21,7 @@ public class BankDbContext : DbContext
         modelBuilder.ApplyConfiguration(new CardSchemeConfig());
         modelBuilder.ApplyConfiguration(new AtmServiceConfig());
         modelBuilder.ApplyConfiguration(new AtmTypeConfig());
+        modelBuilder.ApplyConfiguration(new AtmDayConfig());
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

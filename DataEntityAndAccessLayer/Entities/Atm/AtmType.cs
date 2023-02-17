@@ -1,5 +1,8 @@
-﻿namespace DataEntityAndAccessLayer.Entities.Atm;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
+namespace DataEntityAndAccessLayer.Entities.Atm;
+
+[Table(nameof(AtmType) + "s")]
 public class AtmType
 {
     public int AtmTypeId { get; set; }
@@ -7,5 +10,5 @@ public class AtmType
     public string Description { get; set; }
 
     // Relationship
-    public ICollection<Atm> Atms { get; set; }
+    public ICollection<Atm> Atms { get; set; } = new List<Atm>();
 }

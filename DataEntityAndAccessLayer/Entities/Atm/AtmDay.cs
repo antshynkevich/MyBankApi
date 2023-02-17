@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataEntityAndAccessLayer.Entities.Atm;
 
+[Table(nameof(AtmDay) + "s")]
 public class AtmDay
 {
     public int AtmDayId { get; set; }
@@ -16,4 +17,5 @@ public class AtmDay
     // Relationships
     [Required]
     public AtmBreak AtmBreak { get; set; }
+    public int AtmStandardAvailabilityId { get; set; }
 }

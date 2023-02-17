@@ -1,11 +1,11 @@
-﻿namespace DataEntityAndAccessLayer.Entities.Atm;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DataEntityAndAccessLayer.Entities.Atm;
 
 public class AtmGeographicCoordinates
 {
-    // public int GeographicCoordinatesId { get; set; }
+    [Column(TypeName = "decimal(8,6)")]
     public decimal Latitude { get; set; }
+    [Column(TypeName = "decimal(8,6)")]
     public decimal Longitude { get; set; }
-
-    // Relationships
-    public int GeolocationId { get; set; }
 }

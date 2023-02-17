@@ -4,7 +4,6 @@ namespace DataEntityAndAccessLayer.Entities.Atm;
 
 public class AtmAddress
 {
-    // public int AtmAddressId { get; set; }
     public string StreetName { get; set; }
     public string BuildingNumber { get; set; }
     [Required]
@@ -15,6 +14,5 @@ public class AtmAddress
     public string Description { get; set; }
 
     // Relationships
-    // public int AtmId { get; set; }
     public AtmGeolocation AtmGeolocation { get; set; }
 }

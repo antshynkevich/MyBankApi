@@ -7,8 +7,6 @@ public class AtmStandardAvailability
     public int AtmStandardAvailabilityId { get; set; }
 
     // Relationships
-    public int AvailabilityId { get; set; }
-    [Required]
-    [MaxLength(7)]
+    public int AtmAvailabilityId { get; set; }
     public ICollection<AtmDay> Days { get; set; }
 }

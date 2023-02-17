@@ -4,6 +4,7 @@ using DataEntityAndAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataEntityAndAccessLayer.Migrations
 {
     [DbContext(typeof(BankDbContext))]
-    partial class BankDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230216162707_SomeFixes4")]
+    partial class SomeFixes4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,22 +37,7 @@ namespace DataEntityAndAccessLayer.Migrations
 
                     b.HasIndex("AtmsAtmId");
 
-                    b.ToTable("AtmAtmService", (string)null);
-                });
-
-            modelBuilder.Entity("AtmCardScheme", b =>
-                {
-                    b.Property<int>("AtmCardSchemesCardSchemeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AtmsAtmId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AtmCardSchemesCardSchemeId", "AtmsAtmId");
-
-                    b.HasIndex("AtmsAtmId");
-
-                    b.ToTable("AtmCardScheme", (string)null);
+                    b.ToTable("AtmAtmService");
                 });
 
             modelBuilder.Entity("DataEntityAndAccessLayer.Entities.Atm.Atm", b =>
@@ -70,6 +58,9 @@ namespace DataEntityAndAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CardSchemeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Currency")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -80,7 +71,9 @@ namespace DataEntityAndAccessLayer.Migrations
 
                     b.HasIndex("AtmTypeId");
 
-                    b.ToTable("Atms", (string)null);
+                    b.HasIndex("CardSchemeId");
+
+                    b.ToTable("Atms");
                 });
 
             modelBuilder.Entity("DataEntityAndAccessLayer.Entities.Atm.AtmAvailability", b =>
@@ -102,7 +95,7 @@ namespace DataEntityAndAccessLayer.Migrations
 
                     b.HasKey("AtmAvailabilityId");
 
-                    b.ToTable("AtmAvailability", (string)null);
+                    b.ToTable("AtmAvailability");
                 });
 
             modelBuilder.Entity("DataEntityAndAccessLayer.Entities.Atm.AtmDay", b =>
@@ -129,7 +122,7 @@ namespace DataEntityAndAccessLayer.Migrations
 
                     b.HasIndex("AtmStandardAvailabilityId");
 
-                    b.ToTable("AtmDays", (string)null);
+                    b.ToTable("AtmDays");
                 });
 
             modelBuilder.Entity("DataEntityAndAccessLayer.Entities.Atm.AtmService", b =>
@@ -154,7 +147,7 @@ namespace DataEntityAndAccessLayer.Migrations
 
                     b.HasKey("AtmServiceId");
 
-                    b.ToTable("AtmServices", (string)null);
+                    b.ToTable("AtmServices");
 
                     b.HasData(
                         new
@@ -251,48 +244,6 @@ namespace DataEntityAndAccessLayer.Migrations
                         new
                         {
                             AtmServiceId = 14,
-                            Description = "Безналичные платежи",
-                            DescriptionEng = "Cashless payments",
-                            ServiceName = "CashlessPayments"
-                        },
-                        new
-                        {
-                            AtmServiceId = 15,
-                            Description = "Платежи наличными",
-                            DescriptionEng = "Cash payments",
-                            ServiceName = "CashPayments"
-                        },
-                        new
-                        {
-                            AtmServiceId = 16,
-                            Description = "Прием наличных",
-                            DescriptionEng = "Cash acceptance",
-                            ServiceName = "CashAcceptance"
-                        },
-                        new
-                        {
-                            AtmServiceId = 17,
-                            Description = "Обмен валюты",
-                            DescriptionEng = "Currency exchange",
-                            ServiceName = "CurrencyExchange"
-                        },
-                        new
-                        {
-                            AtmServiceId = 18,
-                            Description = "Прием выручки",
-                            DescriptionEng = "Acceptance of proceeds",
-                            ServiceName = "AcceptanceProceeds"
-                        },
-                        new
-                        {
-                            AtmServiceId = 19,
-                            Description = "Бесконтактное cнятие наличных",
-                            DescriptionEng = "Contactless cash withdrawal",
-                            ServiceName = "ContactlessWithdrawal"
-                        },
-                        new
-                        {
-                            AtmServiceId = 20,
                             Description = "Другие",
                             DescriptionEng = "Others",
                             ServiceName = "Other"
@@ -315,7 +266,7 @@ namespace DataEntityAndAccessLayer.Migrations
                     b.HasIndex("AtmAvailabilityId")
                         .IsUnique();
 
-                    b.ToTable("AtmStandardAvailability", (string)null);
+                    b.ToTable("AtmStandardAvailability");
                 });
 
             modelBuilder.Entity("DataEntityAndAccessLayer.Entities.Atm.AtmType", b =>
@@ -336,7 +287,7 @@ namespace DataEntityAndAccessLayer.Migrations
 
                     b.HasKey("AtmTypeId");
 
-                    b.ToTable("AtmTypes", (string)null);
+                    b.ToTable("AtmTypes");
 
                     b.HasData(
                         new
@@ -381,7 +332,7 @@ namespace DataEntityAndAccessLayer.Migrations
 
                     b.HasKey("CardSchemeId");
 
-                    b.ToTable("CardSchemes", (string)null);
+                    b.ToTable("CardSchemes");
 
                     b.HasData(
                         new
@@ -478,21 +429,6 @@ namespace DataEntityAndAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AtmCardScheme", b =>
-                {
-                    b.HasOne("DataEntityAndAccessLayer.Entities.Atm.CardScheme", null)
-                        .WithMany()
-                        .HasForeignKey("AtmCardSchemesCardSchemeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataEntityAndAccessLayer.Entities.Atm.Atm", null)
-                        .WithMany()
-                        .HasForeignKey("AtmsAtmId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("DataEntityAndAccessLayer.Entities.Atm.Atm", b =>
                 {
                     b.HasOne("DataEntityAndAccessLayer.Entities.Atm.AtmAvailability", "AtmAvailability")
@@ -507,7 +443,11 @@ namespace DataEntityAndAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.Atm.AtmAddress#DataEntityAndAccessLayer.Entities.Atm.AtmAddress", "AtmAddress", b1 =>
+                    b.HasOne("DataEntityAndAccessLayer.Entities.Atm.CardScheme", null)
+                        .WithMany("Atms")
+                        .HasForeignKey("CardSchemeId");
+
+                    b.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.AtmAddress", "AtmAddress", b1 =>
                         {
                             b1.Property<int>("AtmId")
                                 .HasColumnType("int");
@@ -547,7 +487,7 @@ namespace DataEntityAndAccessLayer.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("AtmId");
 
-                            b1.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.Atm.AtmAddress#DataEntityAndAccessLayer.Entities.Atm.AtmAddress.AtmGeolocation#DataEntityAndAccessLayer.Entities.Atm.AtmGeolocation", "AtmGeolocation", b2 =>
+                            b1.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.AtmGeolocation", "AtmGeolocation", b2 =>
                                 {
                                     b2.Property<int>("AtmAddressAtmId")
                                         .HasColumnType("int");
@@ -559,9 +499,12 @@ namespace DataEntityAndAccessLayer.Migrations
                                     b2.WithOwner()
                                         .HasForeignKey("AtmAddressAtmId");
 
-                                    b2.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.Atm.AtmAddress#DataEntityAndAccessLayer.Entities.Atm.AtmAddress.AtmGeolocation#DataEntityAndAccessLayer.Entities.Atm.AtmGeolocation.AtmGeographicCoordinates#DataEntityAndAccessLayer.Entities.Atm.AtmGeographicCoordinates", "AtmGeographicCoordinates", b3 =>
+                                    b2.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.AtmGeographicCoordinates", "AtmGeographicCoordinates", b3 =>
                                         {
                                             b3.Property<int>("AtmGeolocationAtmAddressAtmId")
+                                                .HasColumnType("int");
+
+                                            b3.Property<int>("GeolocationId")
                                                 .HasColumnType("int");
 
                                             b3.Property<decimal>("Latitude")
@@ -586,7 +529,7 @@ namespace DataEntityAndAccessLayer.Migrations
                                 .IsRequired();
                         });
 
-                    b.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.Atm.ContactDetails#DataEntityAndAccessLayer.Entities.Atm.ContactDetails", "ContactDetails", b1 =>
+                    b.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.ContactDetails", "ContactDetails", b1 =>
                         {
                             b1.Property<int>("AtmId")
                                 .HasColumnType("int");
@@ -597,7 +540,7 @@ namespace DataEntityAndAccessLayer.Migrations
 
                             b1.HasKey("AtmId");
 
-                            b1.ToTable("Atms", (string)null);
+                            b1.ToTable("Atms");
 
                             b1.WithOwner()
                                 .HasForeignKey("AtmId");
@@ -622,7 +565,7 @@ namespace DataEntityAndAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.AtmDay.AtmBreak#DataEntityAndAccessLayer.Entities.Atm.AtmBreak", "AtmBreak", b1 =>
+                    b.OwnsOne("DataEntityAndAccessLayer.Entities.Atm.AtmBreak", "AtmBreak", b1 =>
                         {
                             b1.Property<int>("AtmDayId")
                                 .HasColumnType("int");
@@ -635,7 +578,7 @@ namespace DataEntityAndAccessLayer.Migrations
 
                             b1.HasKey("AtmDayId");
 
-                            b1.ToTable("AtmDays", (string)null);
+                            b1.ToTable("AtmDays");
 
                             b1.WithOwner()
                                 .HasForeignKey("AtmDayId");
@@ -666,6 +609,11 @@ namespace DataEntityAndAccessLayer.Migrations
                 });
 
             modelBuilder.Entity("DataEntityAndAccessLayer.Entities.Atm.AtmType", b =>
+                {
+                    b.Navigation("Atms");
+                });
+
+            modelBuilder.Entity("DataEntityAndAccessLayer.Entities.Atm.CardScheme", b =>
                 {
                     b.Navigation("Atms");
                 });
