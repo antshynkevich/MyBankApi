@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ServiceLayer.Mapping;
 
-internal class AtmMappingHelper
+internal class AtmMapperFromJson
 {
     private readonly BankDbContext _context;
 
-    public AtmMappingHelper(BankDbContext context)
+    public AtmMapperFromJson(BankDbContext context)
     {
         _context = context;
     }

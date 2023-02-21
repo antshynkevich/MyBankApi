@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using DataEntityAndAccessLayer;
 using Microsoft.EntityFrameworkCore;
+using ServiceLayer.Mapping;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BankDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 

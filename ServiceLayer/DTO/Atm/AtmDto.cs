@@ -5,43 +5,61 @@ namespace ServiceLayer.DTO.Atm;
 
 public class AtmDto
 {
-    [JsonConverter(typeof(IdConverter))]
-    public int AtmId { get; set; }
-
-    [JsonConverter(typeof(AtmTypeConverter))]
+    public string AtmId { get; set; }
     [JsonPropertyName("type")]
-    public AtmTypeDto AtmTypeDto { get; set; }
-
+    public string AtmType { get; set; }
     public string BaseCurrency { get; set; }
     public string Currency { get; set; }
-
+    public List<string> Cards { get; set; }
     [JsonPropertyName("address")]
-    [JsonConverter(typeof(AtmAddressConverter))]
-    public AtmAddressDto AtmAddressDto { get; set; }
-
-    [JsonPropertyName("cards")]
-    [JsonConverter(typeof(CardSchemeConverter))]
-    public List<CardSchemeDto> CardSchemesDto { get; set; }
-
+    public AtmAddressDto AtmAddress { get; set; }
     [JsonPropertyName("services")]
-    [JsonConverter(typeof(AtmServiceConverter))]
-    public List<AtmServiceDto> AtmServicesDto { get; set; }
+    public List<AtmServiceDto> AtmServices{ get; set; }
+    [JsonPropertyName("availability")]
+    public AtmAvailabilityDto AtmAvailabilityDto { get; set; }
+    [JsonPropertyName("contactDetails")]
+    public ContactDetailsDto ContactDetailsDto { get; set; }
 }
 
 public class AtmServiceDto
 {
-    public string ServiceName { get; set; }
-    public string Description { get; set; }
+    public string ServiceType { get; set; }
+    public string Description { get; set; } = string.Empty;
 }
 
-public class CardSchemeDto
+public class AtmAvailabilityDto
 {
-    public string CardSchemeName { get; set; }
-    public string Description { get; set; }
+    public bool Access24Hours { get; set; }
+    public bool IsRestricted { get; set; }
+    public bool SameAsOrganization { get; set; }
+    [JsonPropertyName("standardAvailability")]
+    public StandardAvailabilityDto StandardAvailabilityDto { get; set; }
 }
 
-public class AtmTypeDto
+public class StandardAvailabilityDto
 {
-    public string AtmTypeName { get; set; }
-    // public string Description { get; set; }
+    public List<DayDto> Days { get; set; }
+}
+
+public class DayDto
+{
+    public string DayCode { get; set; }
+    [JsonConverter(typeof(TimeCorrectionConverter))]
+    public string OpeningTime { get; set; }
+    [JsonConverter(typeof(TimeCorrectionConverter))]
+    public string ClosingTime { get; set; }
+    public BreakDto Break { get; set; }
+}
+
+public class BreakDto
+{
+    [JsonConverter(typeof(TimeCorrectionConverter))]
+    public string BreakFromTime { get; set; }
+    [JsonConverter(typeof(TimeCorrectionConverter))]
+    public string BreakToTime { get; set; }
+}
+
+public class ContactDetailsDto
+{
+    public string PhoneNumber { get; set; }
 }
